@@ -408,4 +408,4 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// შექმნა დავით ენდელაძემ
+
