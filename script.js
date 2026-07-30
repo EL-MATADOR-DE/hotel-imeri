@@ -64,6 +64,13 @@ const translations = {
     footer_contact_title: "კონტაქტი",
     footer_rights: "© 2026 პარკ ჰოტელი იმერი ქუთაისი. ყველა უფლება დაცულია.",
     btn_more: "მეტი",
+    footer_privacy: "კონფიდენციალობის პოლიტიკა",
+    cookie_title: "კონფიდენციალობის პარამეტრები",
+    cookie_text: "ჩვენ გვიყენებთ cookies-ებს თქვენი გამოცდილების გაუმჯობესადა და საიტის ტრაფიკის გასაანალიზებლად. ჩვენის მიღება-ზე დაწკაპეთ თანხმობა აგვზავთ cookies-ების გამოყენებაზე.",
+    cookie_policy_link: "კონფიდენციალობის პოლიტიკა",
+    cookie_accept: "ყველას მიღება",
+    cookie_decline: "არ დავირდე",
+    cookie_settings: "🍪 Cookie-ების პარამეტრები",
   },
 
   en: {
@@ -124,6 +131,13 @@ const translations = {
     footer_contact_title: "Contact",
     footer_rights: "© 2026 Park Hotel Imeri Kutaisi. All rights reserved.",
     btn_more: "More",
+    footer_privacy: "Privacy Policy",
+    cookie_title: "Privacy Preferences",
+    cookie_text: "We use cookies to improve your browsing experience and analyze site traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+    cookie_policy_link: "Privacy Policy",
+    cookie_accept: "Accept All",
+    cookie_decline: "Decline",
+    cookie_settings: "🍪 Cookie Settings",
   },
 
   ru: {
@@ -184,6 +198,13 @@ const translations = {
     footer_contact_title: "Контакт",
     footer_rights: "© 2026 Парк Отель Имери Кутаиси. Все права защищены.",
     btn_more: "Больше",
+    footer_privacy: "Политика конфиденциальности",
+    cookie_title: "Настройки конфиденциальности",
+    cookie_text: "Мы используем файлы cookie для улучшения вашего взаимодействия с сайтом и анализа трафика. Нажав \"Принять все\", вы даёте согласие на использование файлов cookie.",
+    cookie_policy_link: "Политика конфиденциальности",
+    cookie_accept: "Принять все",
+    cookie_decline: "Отказаться",
+    cookie_settings: "🍪 Настройки Cookie",
   },
 
   de: {
@@ -244,6 +265,13 @@ const translations = {
     footer_contact_title: "Kontakt",
     footer_rights: "© 2026 Park Hotel Imeri Kutaissi. Alle Rechte vorbehalten.",
     btn_more: "Mehr",
+    footer_privacy: "Datenschutzrichtlinie",
+    cookie_title: "Datenschutzeinstellungen",
+    cookie_text: "Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern und den Website-Verkehr zu analysieren. Indem Sie auf \"Alle akzeptieren\" klicken, stimmen Sie der Verwendung von Cookies zu.",
+    cookie_policy_link: "Datenschutzrichtlinie",
+    cookie_accept: "Alle akzeptieren",
+    cookie_decline: "Ablehnen",
+    cookie_settings: "🍪 Cookie-Einstellungen",
   }
 };
 
@@ -408,4 +436,82 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const declineBtn = document.getElementById("decline-cookies");
 
+    // PASTE YOUR GOOGLE ANALYTICS ID HERE
+    const GA_TRACKING_ID = 'G-4L3W66XLXE'; 
+
+    // Check if the user has already answered
+    const consent = getCookie("cookieConsent");
+
+    if (!consent) {
+        // No answer yet? Show the banner.
+        banner.classList.remove("hidden");
+    } else if (consent === "accepted") {
+        // Already accepted previously? Load analytics immediately.
+        loadGoogleAnalytics(GA_TRACKING_ID);
+    }
+
+    // When they click "Accept All"
+    acceptBtn.addEventListener("click", () => {
+        setCookie("cookieConsent", "accepted", 365); // Save preference for 1 year
+        banner.classList.add("hidden");              // Hide the banner
+        loadGoogleAnalytics(GA_TRACKING_ID);         // Fire up Google Analytics!
+    });
+
+    // When they click "Decline"
+    declineBtn.addEventListener("click", () => {
+        setCookie("cookieConsent", "declined", 365);
+        banner.classList.add("hidden");
+        // We do NOT call loadGoogleAnalytics here
+    });
+});
+
+// Helper Function: Dynamically injects Google Analytics
+function loadGoogleAnalytics(trackingId) {
+    // Prevent loading the script twice if they click the button multiple times
+    if (document.getElementById('ga-script')) return;
+
+    // 1. Create and inject the external Google script tag
+    const script = document.createElement('script');
+    script.id = 'ga-script';
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // 2. Initialize the dataLayer and config
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', trackingId);
+
+    console.log("Cookie accepted: Google Analytics has been loaded.");
+}
+
+// Helper Function: Set a cookie
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const secure = location.protocol === 'https:' ? ';Secure' : '';
+    document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax${secure}`;
+}
+
+// Helper Function: Read a cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+// Reset cookie consent — clears saved choice and shows the banner again
+function resetCookieConsent() {
+    document.cookie = "cookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('hidden');
+}
+
+// შექმნა დავით ენდელაძემ
