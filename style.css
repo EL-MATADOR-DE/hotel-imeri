@@ -2,7 +2,7 @@
    TERASA IMERI — HOTEL WEBSITE STYLES
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Google Fonts are loaded via <link> in HTML — no @import needed here */
 
 /* ---- CSS VARIABLES ---- */
 :root {
@@ -63,6 +63,24 @@ body {
   color: var(--text);
   line-height: 1.6;
   transition: background var(--transition), color var(--transition);
+}
+
+/* Skip to content link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 16px;
 }
 
 img {
