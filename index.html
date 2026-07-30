@@ -15,15 +15,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/jpeg" href="logo/IMERI_Park_Hotel_logo_redesign_202607231140.jpeg">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4L3W66XLXE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-4L3W66XLXE');
-</script>
 </head>
 
 <body>
@@ -85,7 +77,7 @@
     <div class="hero-content">
       <div class="hero-badge" data-i18n="hero_badge">🏔️ ნიკეა, იმერეთი</div>
       <h1 class="hero-title" data-i18n="brand">პარკ ჰოტელი იმერი ქუთაისი</h1>
-      <p class="hero-tagline" data-i18n="hero_tagline">ადგილი, სადაც ბუნება და კომფორტი ერთ სივრცეში ერთიანდება</p>
+      <p class="hero-tagline" data-i18n="hero_tagline">ადგილი, სადაც ბუნება და კომფორტი ერთ სივრცეში ერთიანდება.</p>
       <a href="https://booking-116243.otelms.com/booking/rooms" target="_blank" class="hero-cta" id="hero-cta-btn">
         <span>🏨</span>
         <span data-i18n="hero_cta">დაჯავშნეთ ახლა</span>
@@ -111,7 +103,7 @@
 
 ჩვენთვის მთავარი პრიორიტეტია, თითოეულმა სტუმარმა თავი იგრძნოს ბუნებასთან ახლოს, მშვიდ და მყუდრო გარემოში.
 
-პარკ ჰოტელი იმერი — ადგილი, სადაც ბუნება და კომფორტი ჰარმონიულად ერწყმის ერთმანეთს. 🌿🏨</p>
+პარკ ჰოტელი იმერი — ადგილი, სადაც ბუნება და კომფორტი ჰარმონიულად ერწყმის ერთმანეთს. </p>
           <div class="about-stats">
             <div class="stat-card reveal reveal-delay-1">
               <span class="stat-number">5</span>
@@ -514,11 +506,31 @@
 
       <div class="footer-bottom">
         <p data-i18n="footer_rights">© 2026 პარკ ჰოტელი იმერი. ყველა უფლება დაცულია.</p>
-
+        <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.7;">
+          <a href="privacy.html" data-i18n="footer_privacy" style="color: #60a5fa; text-decoration: underline; font-weight: 500;">კონფიდენციალობის პოლიტიკა</a>
+          
+          <a href="#" onclick="resetCookieConsent(); return false;" data-i18n="cookie_settings" style="color: #60a5fa; text-decoration: underline; font-weight: 500;">🍪 Cookie-ების პარამეტრები</a>
+        </p>
+      </div>
+    </div>
   </footer>
+
+  <div id="cookie-banner" class="cookie-banner hidden">
+  <div class="cookie-content">
+    <h4 data-i18n="cookie_title">Privacy Preferences</h4>
+    <p>
+      <span data-i18n="cookie_text">We use cookies to improve your browsing experience and analyze site traffic. By clicking "Accept All", you consent to our use of cookies.</span>
+      <a href="privacy.html" data-i18n="cookie_policy_link" style="color: #60a5fa; text-decoration: underline; font-weight: 500;">Privacy Policy</a>
+    </p>
+  </div>
+  <div class="banner-buttons">
+    <button id="accept-cookies" class="btn accept" data-i18n="cookie_accept">Accept All</button>
+    <button id="decline-cookies" class="btn decline" data-i18n="cookie_decline">Decline</button>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
-
+<!-- შექმნა დავით ენდელაძემ -->
 
 </html>
