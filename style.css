@@ -1377,3 +1377,101 @@ footer {
 }
 
 
+/* Cookie Banner - Terasa Imeri Theme */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 500px; /* Keeps it elegant and not too wide */
+  margin: 0 auto;
+  
+  /* Hooks directly into your existing color palette */
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: var(--shadow-lg);
+  
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+  
+  /* Smooth entrance animation */
+  transition: opacity var(--transition, 0.3s ease), transform var(--transition, 0.3s ease);
+}
+
+.cookie-banner.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.cookie-content h4 {
+  margin: 0 0 8px 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.cookie-content p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.banner-buttons .btn {
+  padding: 10px 20px;
+  border-radius: var(--radius, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition, 0.3s ease), color var(--transition, 0.3s ease);
+}
+
+/* Primary Action uses your Accent color */
+.banner-buttons .accept {
+  background-color: var(--accent);
+  color: #ffffff;
+  border: none;
+}
+
+.banner-buttons .accept:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Secondary Action uses alternate background */
+.banner-buttons .decline {
+  background-color: var(--bg-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.banner-buttons .decline:hover {
+  background-color: var(--border);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .cookie-banner {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 20px;
+  }
+  .banner-buttons {
+    flex-direction: column;
+  }
+  .banner-buttons .btn {
+    width: 100%;
+  }
+}
+
+/* შექმნა დავით ენდელაძემ */
