@@ -8,17 +8,27 @@
   <meta name="description"
     content="იმერი — კომფორტული სასტუმრო ნიკეაში, იმერეთი. Imeri hotel in Nikea, Imereti, Georgia. Comfortable rooms, mountain views, warm hospitality.">
   <meta name="keywords" content="იმერი, სასტუმრო ნიკეა, Imeri, hotel Nikea, Georgia hotel, Imereti">
+  <meta name="theme-color" content="#8B6F47">
+  <!-- Preload hero image so it loads immediately on mobile -->
+  <link rel="preload" as="image" href="images/big-photo.jpg">
+  <!-- Google Fonts: preconnect then load once (removed duplicate @import in CSS) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/jpeg" href="logo/IMERI_Park_Hotel_logo_redesign_202607231140.jpeg">
 
 </head>
 
+
 <body>
+  <!-- Skip to content for accessibility -->
+  <a href="#hero" class="skip-link">Skip to main content</a>
 
   <!-- ==================== NAVBAR ==================== -->
   <nav id="navbar">
@@ -37,20 +47,20 @@
       </ul>
 
       <div class="nav-controls">
-        <button class="lang-btn active" id="btn-ka" onclick="setLang('ka')" aria-label="Georgian">
-          <span class="lang-flag">🇬🇪</span><span class="lang-code">ქარ</span>
+        <button class="lang-btn active" id="btn-ka" onclick="setLang('ka')" aria-label="ქართული ენა">
+          <span class="lang-flag" aria-hidden="true">🇬🇪</span><span class="lang-code">ქარ</span>
         </button>
         <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-label="English">
-          <span class="lang-flag">🇺🇸</span><span class="lang-code">EN</span>
+          <span class="lang-flag" aria-hidden="true">🇺🇸</span><span class="lang-code">EN</span>
         </button>
         <button class="lang-btn" id="btn-ru" onclick="setLang('ru')" aria-label="Russian">
-          <span class="lang-flag">🇷🇺</span><span class="lang-code">RU</span>
+          <span class="lang-flag" aria-hidden="true">🇷🇺</span><span class="lang-code">RU</span>
         </button>
         <button class="lang-btn" id="btn-de" onclick="setLang('de')" aria-label="German">
-          <span class="lang-flag">🇩🇪</span><span class="lang-code">DE</span>
+          <span class="lang-flag" aria-hidden="true">🇩🇪</span><span class="lang-code">DE</span>
         </button>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
-        <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode"><span aria-hidden="true">☀️</span></button>
+        <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
       </div>
     </div>
   </nav>
@@ -416,6 +426,7 @@
 
         <div class="map-wrapper reveal reveal-delay-2">
           <iframe
+            title="Park Hotel Imeri location on Google Maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2954.486299044698!2d42.68875337638676!3d42.22542267120579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405cf2b92d8eec25%3A0xbd73788b3bb6cac6!2z4YOe4YOQ4YOg4YOZIOGDsOGDneGDouGDlOGDmiDhg5jhg5vhg5Thg6Dhg5g!5e0!3m2!1ska!2sge!4v1784800741498!5m2!1ska!2sge"
             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
