@@ -514,4 +514,4 @@ function resetCookieConsent() {
     if (banner) banner.classList.remove('hidden');
 }
 
-// შექმნა დავით ენდელაძემ
+
